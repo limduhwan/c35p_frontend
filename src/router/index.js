@@ -6,6 +6,7 @@ import BookRequestList from '@/components/BookRequestList'
 
 Vue.use(Router)
 
+
 export default new Router({
   routes: [
     {
