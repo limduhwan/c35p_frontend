@@ -28,7 +28,7 @@ module.exports = {
     // in the browser.
     showEslintErrorsInOverlay: false,
 
-    /**
+    /**    "babel-eslint": "^8.2.1",
      * Source Maps
      */
 
