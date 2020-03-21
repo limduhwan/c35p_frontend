@@ -29,3 +29,6 @@ jobs:
           npm run build
           aws --version
           aws s3 cp ./dist s3://c35p-book --recursive
+
+
+
