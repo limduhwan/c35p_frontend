@@ -7,8 +7,10 @@ const API_URLs = {
 };
 
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+
+let API_SOCK_URL;
 if (process.env.NODE_ENV === 'development') {
-  const API_SOCK_URL = API_URLs['local'];
+  API_SOCK_URL = API_URLs['local'];
 };
 
 export {
