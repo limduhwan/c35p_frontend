@@ -6,8 +6,6 @@ const API_URLs = {
   // stage: 'https://noster-api-stage-910898538.us-west-1.elb.amazonaws.com',
 };
 
-// const API_SOCK_URL = API_URLs[process.env.REACT_APP_ENV];
-
 console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
   const API_SOCK_URL = API_URLs['local'];
