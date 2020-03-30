@@ -7,7 +7,11 @@ const API_URLs = {
 };
 
 // const API_SOCK_URL = API_URLs[process.env.REACT_APP_ENV];
-const API_SOCK_URL = API_URLs['local'];
+
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
+if (process.env.NODE_ENV === 'development') {
+  const API_SOCK_URL = API_URLs['local'];
+};
 
 export {
   API_SOCK_URL,
