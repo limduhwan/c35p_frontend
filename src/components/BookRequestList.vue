@@ -67,7 +67,8 @@
         searchOpt: '전체',
         keyword: '',
         tableData: [],
-        columns: ['no', 'title', 'author', 'publisher', 'dateForMobile', 'publishedDate', 'createdDate', 'applier','status', 'applierAndStatus'],
+        columns: ['no', 'title', 'author', 'publisher', 'publishedDate','status'],
+        // columns: ['no', 'title', 'author', 'publisher', 'dateForMobile', 'publishedDate', 'createdDate', 'applier','status', 'applierAndStatus'],
         options: {
           headings: {
             no: 'No.',
@@ -91,6 +92,7 @@
     methods: {
       statusChanged: function(rowNo, isbn, e, title){
         let selectedStatus = e.target.value;
+        console.log('isbn, selectedStatus', isbn, selectedStatus);
         this.fireStore.updateBook(isbn, selectedStatus);
         this.tableData[rowNo-1].status = selectedStatus;
       },
@@ -103,6 +105,7 @@
         this.readBooksByFilter();
       },
       setTableData: function(value){
+        console.log('value   ', value);
         this.tableData = value;
       }
     }

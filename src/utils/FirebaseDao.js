@@ -84,19 +84,6 @@ export default class FirebaseDao {
   }
 
   async insertBook(book) {
-    // this.database.ref('books/' + book.isbn).set({
-    //   isbn: book.isbn,
-    //   title : book.title,
-    //   author : book.author,
-    //   publishedDate : book.publishedDate,
-    //   publisher : book.publisher,
-    //   createdDate : book.createdDate,
-    //   updatedDate : book.updatedDate,
-    //   status : book.status,
-    //   link : book.link,
-    //   image : book.image,
-    //   applier : book.applier
-    // })
     axios.post(`${API_SOCK_URL}/books`,{
         isbn: book.isbn,
         title : book.title,
@@ -116,11 +103,21 @@ export default class FirebaseDao {
     });
   }
 
-  updateBook(isbn, status){
+  async updateBook(isbn, status){
     // this.database.ref('books/' +isbn).update({
     //   updatedDate : new Date().toISOString(),
     //   status : status
     // })
+
+    console.log('isbn', isbn, status);
+
+    const bookInfo = {
+        updatedDate : new Date().toISOString(),
+        status : status
+    }
+    const { data } = await axios.put(`${API_SOCK_URL}/books/${isbn}`, bookInfo);
+    return data;
+
   }
 
 }
