@@ -1,5 +1,7 @@
 class Book{
   constructor(isbn, title, author, publishedDate,publisher, status, link, image, applier){
+
+    console.log('isbn, title, author, publishedDate,publisher, status, link, image, applier',isbn, title, author, publishedDate,publisher, status, link, image, applier)
     this.isbn = isbn;
     this.title=title;
     this.author=author;

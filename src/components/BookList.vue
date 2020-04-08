@@ -75,11 +75,9 @@ export default {
       this.readBooksByFilter();
     },
     readBooksByFilter: function(){
-      console.log('this.searchOpt   ', this.searchOpt);
       this.fireStore.readAllBooksBy(this.setTableData, this.searchOpt, this.keyword, NotIncludeCanceledBook);
     },
     setTableData: function(value){
-      console.log("value   ", value);
       this.tableData = value;
     }
   }

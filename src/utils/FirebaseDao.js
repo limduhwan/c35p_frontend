@@ -22,21 +22,7 @@ export default class FirebaseDao {
   }
 
   async readAllBooksBy(callback, filterType = '전체', searchKeyword = '', isCanceledIncluded = true) {
-    if(filterType === '전체'){
-      filterType = 'ALL';
-    } else if(filterType === '보유'){
-      filterType = 'GOT';
-    } else if(filterType === '신청중') {
-      filterType = 'APPLYING';
-    }
-
-    console.log('2 BookRequestList readBooksByFilter', filterType);
     const { data: { bookItems } } = await axios.get(`${API_SOCK_URL}/readAllBooksBy/${filterType}`);
-    // const response = await axios.get(`${API_SOCK_URL}/readAllBooksBy/`);
-
-    console.log('bookItems', bookItems);
-
-    // this.queryStatusOrderedBooksBy(filterType).then((snapshot)=>{
       let returnBooks = [];
 
     // bookItems.forEach((book) => {
@@ -84,6 +70,7 @@ export default class FirebaseDao {
   }
 
   async insertBook(book) {
+      console.log('insert book', book);
     axios.post(`${API_SOCK_URL}/books`,{
         isbn: book.isbn,
         title : book.title,
@@ -97,27 +84,16 @@ export default class FirebaseDao {
         image : book.image,
         applier : book.applier
       }).then( (result) => {
-        console.log(result);
-        console.log(JSON.parse(JSON.stringify(result)));
         return isbn;
     });
   }
 
   async updateBook(isbn, status){
-    // this.database.ref('books/' +isbn).update({
-    //   updatedDate : new Date().toISOString(),
-    //   status : status
-    // })
-
-    console.log('isbn', isbn, status);
-
     const bookInfo = {
-        updatedDate : new Date().toISOString(),
-        status : status
+        updatedDate: new Date().toISOString(),
+        status: status
     }
     const { data } = await axios.put(`${API_SOCK_URL}/books/${isbn}`, bookInfo);
     return data;
-
   }
-
 }

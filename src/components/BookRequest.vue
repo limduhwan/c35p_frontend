@@ -116,7 +116,6 @@ export default {
       }
     },
     requestBook: function (bookInfo) {
-
       let bookTitle = this.removeBTag(bookInfo.title) ;
 
       this.$swal({
@@ -133,13 +132,25 @@ export default {
             '이름이 입력되지 않았습니다.'
           )
         }else if(result.value !== undefined){
-
           const applier = result.value;
           this.$swal({
             title: '책 신청 완료',
             html: bookTitle,
           }).then(() => {
-            var book = new Book(bookInfo.isbn, bookTitle, this.removeBTag(bookInfo.author), bookInfo.publishedDate, bookInfo.publisher,"신청중", bookInfo.link, bookInfo.image, applier);
+            const book = {
+              isbn: bookInfo.isbn,
+              title:bookTitle,
+              author:this.removeBTag(bookInfo.author),
+              publishedDate: bookInfo.publishedDate,
+              publisher: bookInfo.publisher,
+              status: "신청중",
+              createdDate:new Date().toISOString(),
+              updatedDate:new Date().toISOString(),
+              link:bookInfo.link,
+              image:bookInfo.image,
+              applier: applier
+            }
+
             this.fireStore.insertBook(book);
 
             this.tableData[bookInfo.no-1].status = '신청중'

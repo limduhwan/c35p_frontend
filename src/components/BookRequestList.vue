@@ -92,12 +92,10 @@
     methods: {
       statusChanged: function(rowNo, isbn, e, title){
         let selectedStatus = e.target.value;
-        console.log('isbn, selectedStatus', isbn, selectedStatus);
         this.fireStore.updateBook(isbn, selectedStatus);
         this.tableData[rowNo-1].status = selectedStatus;
       },
       readBooksByFilter: function(){
-        console.log('1 BookRequestList readBooksByFilter');
         this.fireStore.readAllBooksBy(this.setTableData, this.searchOpt, this.keyword);
       },
       getBooksByStatus: function(e){
@@ -105,7 +103,6 @@
         this.readBooksByFilter();
       },
       setTableData: function(value){
-        console.log('value   ', value);
         this.tableData = value;
       }
     }
