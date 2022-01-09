@@ -14,7 +14,7 @@
             </button>
             <a class="navbar-brand" :style="style.navBrand">
 <!--              <img :style="style.actlogo" src="../static/act-transparent-30.png"/>-->
-              <b>C35P-BOOK</b>
+              <b>TongBo-BooKs</b>
             </a>
           </div>
 
